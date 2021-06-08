@@ -180,9 +180,13 @@ extension EventTableController: UITableViewDataSource, UITableViewDelegate {
  Converts string date format from API to formatted Date
  */
 extension UILabel {
-    func convertDateFormat(date: Date) {
+    func convertDateFormat(date: Date, timeTBD: Bool) {
         let dateFormatter = DateFormatter()
-        dateFormatter.setLocalizedDateFormatFromTemplate("EEEE d MMM yyyy h:mm a")
+        if( timeTBD ) {
+            dateFormatter.setLocalizedDateFormatFromTemplate("EEEE, MMM d, yyyy")
+        } else {
+            dateFormatter.setLocalizedDateFormatFromTemplate("EEEE d MMM yyyy h:mm a")
+        }
         dateFormatter.amSymbol = "AM"
         dateFormatter.pmSymbol = "PM"
         self.text = dateFormatter.string(from: date)

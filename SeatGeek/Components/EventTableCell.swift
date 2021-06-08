@@ -26,7 +26,8 @@ class EventTableCell: UITableViewCell {
         eventImageView.load(url: imageURL)
         
         //Set Date
-        eventDateLabel.convertDateFormat(date: event.date)
+        eventDateLabel.convertDateFormat(date: event.date, timeTBD: event.timeTBD)
+        
         
         //Set title
         eventTitleLabel.text = event.title

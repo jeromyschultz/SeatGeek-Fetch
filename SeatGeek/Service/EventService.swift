@@ -111,6 +111,7 @@ class EventService {
                 newEntity.state = event.state
                 newEntity.country = event.country
                 newEntity.date = dateformatter.date(from: event.date)!
+                newEntity.timeTBD = event.timeTBD
                 newEntity.isFavorite = false
                 do {
                     //Save data

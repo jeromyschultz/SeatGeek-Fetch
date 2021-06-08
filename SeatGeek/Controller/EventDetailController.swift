@@ -27,7 +27,7 @@ class EventDetailController: UIViewController {
         //Set title
         eventDetailTitleLabel.text = (event?.title)!
         //Set Data
-        eventDetailDateLabel.convertDateFormat(date: (event?.date)!)
+        eventDetailDateLabel.convertDateFormat(date: (event?.date)!, timeTBD: event!.timeTBD)
         //Set image
         let imageURL = URL(string: event!.image)!
         eventDetailImageView.load(url: imageURL)

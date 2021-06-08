@@ -78,15 +78,17 @@ struct Event: Decodable {
     let state: String?
     let city: String?
     let country: String?
+    let timeTBD: Bool
     let performer: [Performer]
     
-    init(id: Int32, title: String, date: String, state: String, city: String, country: String, performer: [Performer]){
+    init(id: Int32, title: String, date: String, state: String, city: String, country: String, timeTBD: Bool, performer: [Performer]){
         self.id = id
         self.title = title
         self.date = date
         self.state = state
         self.city = city
         self.country = country
+        self.timeTBD = timeTBD
         self.performer = performer
     }
 
@@ -96,6 +98,7 @@ struct Event: Decodable {
         case date = "datetime_local"
         case venue
         case performer = "performers"
+        case timeTBD = "time_tbd"
     }
 
     enum VenueKeys: String, CodingKey {
@@ -109,12 +112,12 @@ struct Event: Decodable {
         self.id = try values.decode(Int32.self, forKey: .id)
         self.title = try values.decode(String.self, forKey: .title)
         self.date = try values.decode(String.self, forKey: .date)
+        self.timeTBD = try values.decode(Bool.self, forKey: .timeTBD)
         
         let venue = try values.nestedContainer(keyedBy: VenueKeys.self, forKey: .venue)
         self.state  = try venue.decode(String.self, forKey: .state)
         self.country  = try venue.decode(String.self, forKey: .country)
         self.city  = try venue.decode(String.self, forKey: .city)
-
         self.performer = try values.decode([Performer].self, forKey: .performer)
     }
     

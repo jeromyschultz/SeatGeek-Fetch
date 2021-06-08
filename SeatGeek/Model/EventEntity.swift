@@ -20,5 +20,6 @@ class EventEntity : NSManagedObject {
     @NSManaged var country : String?
     @NSManaged var date : Date
     @NSManaged var isFavorite : Bool
+    @NSManaged var timeTBD: Bool
 
 }
